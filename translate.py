@@ -17,12 +17,15 @@ def copyText():
             x = x.replace('\n', ' ')
             x = x.replace(' .', ', ')
             x = x.replace('. ', '.')
+            x = x.replace('i.e.', 'ie')
             x = x.replace('.', '.\n')
             x = x.replace('{', '(')
             x = x.replace('}', ')')
             x = x.replace('\\', ' ')
             x = x.replace('􀀀', '')
-            text += x[:-1]
+            x = x[:-2] if '- ' in x else x
+            text += x
+    print(text)
     text = translateText(text)
     pyperclip.copy(text)
     print(text)
@@ -43,7 +46,7 @@ class ChangeHandler(PatternMatchingEventHandler):
     def on_modified(self, event):
         """."""
         copyText()
-        # print("\n\n\n\n\n")
+        print("\n")
 
 
 if __name__ == "__main__":

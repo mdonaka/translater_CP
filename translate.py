@@ -11,7 +11,7 @@ from watchdog.observers import Observer
 def copyText():
     """Text tlanslate and copy."""
     text = ""
-    with open("tool.txt", encoding="utf-8_sig") as f:
+    with open("english.txt", encoding="utf-8_sig") as f:
         for x in f:
             x = x.replace('\r\n', '\n')
             x = x.replace('\n', ' ')
@@ -38,7 +38,7 @@ class ChangeHandler(PatternMatchingEventHandler):
 
     def __init__(self):
         """."""
-        super(ChangeHandler, self).__init__(patterns=["*tool.txt*"])
+        super(ChangeHandler, self).__init__(patterns=["*english.txt*"])
 
     def on_modified(self, event):
         """."""

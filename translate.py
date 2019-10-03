@@ -23,7 +23,7 @@ def copyText():
             x = x.replace('}', ')')
             x = x.replace('\\', ' ')
             x = x.replace('􀀀', '')
-            x = x[:-2] if '- ' in x else x
+            x = x[:-2] if x[-2:] == "- " else x
             text += x
     print(text)
     text = translateText(text)

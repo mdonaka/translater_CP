@@ -5,7 +5,7 @@ import time
 import pyperclip
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
-from google_trans import trans 
+from google_trans import trans
 
 
 def copyText():
@@ -22,13 +22,11 @@ def copyText():
             x = x.replace('{', '(')
             x = x.replace('}', ')')
             x = x.replace('\\', ' ')
-            x = x.replace('􀀀', '')
             x = x[:-2] if x[-2:] == "- " else x
             text += x
-    print(text)
-    text = translateText(text)
-    pyperclip.copy(text)
-    print(text)
+    text_jp = translateText(text).replace("。", '．\n')
+    pyperclip.copy(text_jp)
+    print(text, text_jp, sep="\n", end="")
 
 
 def translateText(text):

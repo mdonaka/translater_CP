@@ -3,9 +3,9 @@
 import time
 
 import pyperclip
-from googletrans import Translator
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
+from google_trans import trans 
 
 
 def copyText():
@@ -33,7 +33,7 @@ def copyText():
 
 def translateText(text):
     """Text tlanslate."""
-    return Translator().translate(text, dest='ja').text
+    return trans(text)
 
 
 class ChangeHandler(PatternMatchingEventHandler):

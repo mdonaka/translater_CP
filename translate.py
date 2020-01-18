@@ -7,6 +7,15 @@ from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 from google_trans import trans
 
+def deleteSpecialCharacter(text):
+    text = text.replace('^', '\^')
+    text = text.replace('&', '\&')
+    text = text.replace('_', '\_')
+    text = text.replace('#', '\#')
+    text = text.replace('$', '\$')
+    text = text.replace('%', '\%')
+    return text
+    
 
 def copyText():
     """Text tlanslate and copy."""
@@ -25,6 +34,7 @@ def copyText():
             x = x[:-2] if x[-2:] == "- " else x
             text += x
     text_jp = translateText(text).replace("。", '．\n')
+    text_jp = deleteSpecialCharacter(text_jp)
     pyperclip.copy(text_jp)
     print(text, text_jp, sep="\n", end="")
 
